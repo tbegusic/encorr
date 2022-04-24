@@ -1,0 +1,9 @@
+<spec>
+<total_steps>25000</total_steps>
+<corr_steps>2001</corr_steps>
+<shift_steps>10</shift_steps>
+<epsilon>0.01</epsilon>
+<nve_dir>nve</nve_dir>
+<op>dip</op>
+<nproc>1</nproc>
+</spec>
