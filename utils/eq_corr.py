@@ -28,16 +28,31 @@ class Equilibrium():
         for bead in range(self.nbeads):
             x += np.loadtxt(self.sim_name + '.' + self.op + '_' + str(bead))
         x = x / self.nbeads
-        
+
+        if 'pol' in self.op:
+            x = np.reshape(x, (len(x), 3, 3))
+            for i in range(len(x)):
+                x[i, range(3), range(3)] -= np.trace(x[i])/3
+            corr_func = pol_aniso_corr
+        else:
+            corr_func = dipole_corr
+                
         c = 0
         corr = np.zeros(self.nsteps_corr)
         for i in range(0, self.nsteps_total-self.nsteps_corr, self.nsteps_shift):
             corr_single = np.zeros(self.nsteps_corr)
             for j in range(self.nsteps_corr):
-                corr_single[j] = np.dot(x[i, :], x[i + j, :])
+                corr_single[j] = corr_func(x[i], x[i + j])
             corr += corr_single
             c+=1
         corr = corr / c
         
         np.savetxt(self.op + '_eq_corr.dat', corr)
     
+
+def dipole_corr(x1, x2):
+    return np.dot(x1, x2)
+def pol_aniso_corr(x1, x2):
+    return np.trace(np.matmul(x1, x2))
+def pol_iso_corr(x1, x2):
+    return x1 * x2
