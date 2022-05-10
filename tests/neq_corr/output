@@ -1,0 +1,92 @@
+
+ ____       ____       ____       ____
+/    \     /    \     /    \     /    \
+|  #################################  |
+\__#_/     \____/     \____/     \_#__/
+   #    _        _______  _____    #
+   #   (_)      |_   __ \|_   _|   #      -*-     v 2.0    -*-
+   #   __  ______ | |__) | | |     #
+   Y  [  ||______||  ___/  | |     #      A Universal Force Engine
+  0 0  | |       _| |_    _| |_    #
+   #  [___]     |_____|  |_____|   #
+ __#_       ____       ____       _#__
+/  # \     /    \     /    \     / #  \
+|  #################################  |
+\____/     \____/     \____/     \____/
+
+    
+ # @simulation: Fetchingffsocket
+ # @simulation: Fetchingffsocket
+ # Initializing system object 
+ # Initializing simulation object 
+ # @simulation: Fetchingffsocket
+ # Initializing system object 
+ # Initializing simulation object 
+ # @simulation: Fetchingffsocket
+ # Initializing system object 
+ # Initializing simulation object 
+ # @simulation: Fetchingffsocket
+ # Initializing system object 
+ # Initializing simulation object 
+ # @simulation: Fetchingffsocket
+ # Initializing system object 
+ # Initializing simulation object 
+ # @simulation: Fetchingffsocket
+ # Initializing system object 
+ # Initializing simulation object 
+ # Binding the forces 
+ @ForceField: Starting the polling thread main loop.
+ @ForceField: Starting the polling thread main loop.
+ # i-PI loaded input file:  input.xml
+ @SOCKET:   Client asked for connection from . Now hand-shaking.
+ @SOCKET:   Handshaking was successful. Added to the client list.
+ @SOCKET:   Client asked for connection from . Now hand-shaking.
+ @SOCKET:   Handshaking was successful. Added to the client list.
+ # Average timings at MD step       0. t/step: 3.56877e-02
+ # @simulation: Fetchingffsocket
+ # @simulation: Fetchingffsocket
+ # Initializing system object 
+ # Initializing simulation object 
+simulation.chk_1 -1
+ # Average timings at MD step       0. t/step: 2.89903e-02
+ # @simulation: Fetchingffsocket
+ # @simulation: Fetchingffsocket
+ # Initializing system object 
+ # Initializing simulation object 
+simulation.chk_1 1
+ # Average timings at MD step       0. t/step: 5.05428e-02
+ # @simulation: Fetchingffsocket
+ # @simulation: Fetchingffsocket
+ # Initializing system object 
+ # Initializing simulation object 
+simulation.chk_2 -1
+ # Average timings at MD step       0. t/step: 3.19378e-02
+ # @simulation: Fetchingffsocket
+ # @simulation: Fetchingffsocket
+ # Initializing system object 
+ # Initializing simulation object 
+simulation.chk_2 1
+ # Average timings at MD step       0. t/step: 3.04961e-02
+ # @simulation: Fetchingffsocket
+ # @simulation: Fetchingffsocket
+ # Initializing system object 
+ # Initializing simulation object 
+simulation.chk_3 -1
+ # Average timings at MD step       0. t/step: 4.40226e-02
+ # @simulation: Fetchingffsocket
+ # @simulation: Fetchingffsocket
+ # Initializing system object 
+ # Initializing simulation object 
+simulation.chk_3 1
+ # Average timings at MD step       0. t/step: 4.91424e-02
+SOFTEXIT CALLED FROM THREAD <_MainThread(MainThread, started 140139328239424)>  @ SIMULATION: Exiting cleanly.
+ !W! Soft exit has been requested with message: ' @ SIMULATION: Exiting cleanly.'. Cleaning up.
+ @SOCKET: Shutting down the driver interface.
+ @SOCKET: Shutting down the driver interface.
+SOFTEXIT: Saving the latest status at the end of the step
+SOFTEXIT: Saving the latest status at the end of the step
+SOFTEXIT: Saving the latest status at the end of the step
+SOFTEXIT: Saving the latest status at the end of the step
+SOFTEXIT: Saving the latest status at the end of the step
+SOFTEXIT: Saving the latest status at the end of the step
+SOFTEXIT: Saving the latest status at the end of the step

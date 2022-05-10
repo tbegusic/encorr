@@ -14,36 +14,19 @@ class Initializer():
     def load_from_xml(file_in, file_in_spec):
         """Loads i-pi input file `file_in` and spectra-specific input file `file_in_spec` """
         #----------------------------
-        #I-PI input parameters.
-        #----------------------------
-        tree, root = read_xml(file_in)
-        try:
-            sim_name = root.find('./output').attrib['prefix'] # Read simulation name.
-        except:
-            sim_name = 'simulation'
-        try:
-            nbeads = int(root.find('./system/initialize').attrib['nbeads']) # Read number of beads.
-        except:
-            nbeads = 1
-        #----------------------------
         #Spectra-specific parameters.
         #----------------------------
         tree, root = read_xml(file_in_spec)
-        #Total number of equilibrium steps.
+        #Number of steps in the correlation function/nonequilibrium dynamics.
         try:
-            nsteps_total = int(root.find('./total_steps').text) 
+            nsteps2 = int(root.find('./corr_steps').text)
         except:
-            nsteps_total = 10000
-        #Total number of equilibrium steps.
+            nsteps2 = 1000
+        #Number of steps for the window shift or number of steps between nonequilibrium trajectories.
         try:
-            nsteps_corr = int(root.find('./corr_steps').text)
+            step1 = int(root.find('./step').text)
         except:
-            nsteps_corr = 1000
-        #Total number of equilibrium steps.
-        try:
-            nsteps_shift = int(root.find('./shift_steps').text)
-        except:
-            nsteps_shift = 10
+            step1 = 10
         # Read operators.
         try:
             op = root.find('./op').text
@@ -54,15 +37,56 @@ class Initializer():
             epsilon = float(root.find('./epsilon').text)
         except:
             epsilon=0.1
+        #Field polarization.
+        try:
+            field_pol = root.find('./field_pol').text
+        except:
+            field_pol = '0, 2'
 
-        return Initializer(sim_name, nbeads, nsteps_total, nsteps_corr, nsteps_shift, op, epsilon)
+        #----------------------------
+        #I-PI input parameters.
+        #----------------------------
+        tree, root = read_xml(file_in)
+        #Predix for the i-pi output files.
+        try:
+            sim_name = root.find('./output').attrib['prefix'] # Read simulation name.
+        except:
+            sim_name = 'simulation'
+        #Number of beads.
+        try:
+            nbeads = int(root.find('./system/initialize').attrib['nbeads']) # Read number of beads.
+        except:
+            nbeads = 1
+        #Stride for printing out dipole/polarizability values.
+        try:
+            for out in root.iter('trajectory'):
+                if out.attrib['filename'] in op:
+                    step2 = int(out.attrib['stride'])
+        except:
+            step2 = 1
+        #Total number of equilibrium steps.
+        try:
+            nsteps1 = int(root.find('./total_steps').text)
+        except:
+            nsteps1 = 10000
+        #Ensemble temperature in K converted to beta in atomic units.
+        try:
+            beta = float(root.find('./ensemble/temperature').text)
+        except:
+            beta = 300
+        beta = 1.0 / (3.167e-6 * beta) #beta in atomic units.
 
-    def __init__(self, sim_name, nbeads, nsteps_total, nsteps_corr, nsteps_shift, op, epsilon):
+        return Initializer(sim_name, nbeads, nsteps1//step2, nsteps2//step2, step1//step2, step2, op, epsilon, field_pol, beta)
+
+    def __init__(self, sim_name, nbeads, nsteps1, nsteps2, step1, step2, op, epsilon, field_pol, beta):
         self.sim_name = sim_name
         self.nbeads = nbeads
-        self.nsteps_total =  nsteps_total
-        self.nsteps_corr = nsteps_corr
-        self.nsteps_shift = nsteps_shift
+        self.nsteps1 =  nsteps1
+        self.nsteps2 = nsteps2
+        self.step1 = step1
+        self.step2 = step2
         self.op = op
         self.epsilon = epsilon
+        self.field_pol = field_pol
+        self.beta = beta
 

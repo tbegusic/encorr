@@ -1,6 +1,6 @@
 <spec>
-<corr_steps>8004</corr_steps>
-<step>40</step>
+<corr_steps>200</corr_steps>
+<step>300</step>
 <epsilon>0.01</epsilon>
 <op>dip</op>
 </spec>

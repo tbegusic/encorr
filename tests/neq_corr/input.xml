@@ -1,11 +1,10 @@
 <simulation verbosity='low'>
   <output prefix='simulation'>
-    <properties stride='1' filename='out'>  [ step, time{picosecond}, conserved, temperature{kelvin}, kinetic_cv, potential, pressure_cv{megapascal} ] </properties>
-    <checkpoint stride='60' filename='chk' overwrite='false'/>
+    <checkpoint stride='300' filename='chk' overwrite='false'/>
     <trajectory filename='dip' stride='4' extra_type='dipole'> extras </trajectory>
-    <trajectory filename='dip_der' stride='60' extra_type='dipole_derivative'> extras </trajectory>    
+    <trajectory filename='dip_der' stride='300' extra_type='dipole_derivative'> extras </trajectory>    
   </output>
-  <total_steps>100000</total_steps>
+  <total_steps>1000</total_steps>
   <prng>
     <seed>32345</seed>
   </prng>

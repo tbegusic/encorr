@@ -1,0 +1,6 @@
+<spec>
+<corr_steps>200</corr_steps>
+<step>300</step>
+<epsilon>2</epsilon>
+<op>dip, pol</op>
+</spec>
