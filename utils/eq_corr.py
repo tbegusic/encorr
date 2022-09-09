@@ -17,6 +17,7 @@ class Equilibrium():
         """Initialises base cell class.
         """
         self.sim_name = input_param.sim_name
+        self.out_name = input_param.out_name
         self.nbeads = input_param.nbeads
         self.op = input_param.op
         self.nsteps1 = input_param.nsteps1
@@ -24,10 +25,17 @@ class Equilibrium():
         self.step1 = input_param.step1
         self.step2 = input_param.step2
 
+        self.fmt_bead = (
+            "{0:0"
+            + str(int(1 + np.floor(np.log(self.nbeads) / np.log(10))))
+            + "d}"
+        )
+
     def process(self):
+
         x = 0
         for bead in range(self.nbeads):
-            x += np.loadtxt(self.sim_name + '.' + self.op + '_' + str(bead))
+            x += np.loadtxt(self.sim_name + '.' + self.op + '_' + self.fmt_bead.format(bead))[:self.nsteps1+1]
         x = x / self.nbeads
 
         if 'pol' in self.op:
@@ -48,7 +56,7 @@ class Equilibrium():
             c+=1
         corr = corr / c
         
-        np.savetxt(self.op + '_eq_corr.dat', corr)
+        np.savetxt(self.out_name + self.op + '_eq_corr.dat', corr)
     
 
 def dipole_corr(x1, x2):

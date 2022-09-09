@@ -30,16 +30,15 @@ class NonEquilibrium(Equilibrium):
         #Take only nonequilibrium part and only z component (perturbation is assumed to be along z axis).
         x = 0
         for bead in range(self.nbeads):
-            x += np.loadtxt(self.sim_name + '.' + self.op + '_' + str(bead))[self.nsteps1 + 1:, 2]
+            x += np.loadtxt(self.sim_name + '.' + self.op + '_' + self.fmt_bead.format(bead))[self.nsteps1 + 1:, 2]
         x = x / self.nbeads
-
         c = 0
         corr = 0
         i_step = self.nsteps2 + 1
         for i in range(0, len(x), 2 * i_step):
             corr += x[i:i + i_step] - x[i + i_step : i + 2 * i_step]
             c+=1
-        corr /= c / self.epsilon
+        corr /= c * self.epsilon
         
-        np.savetxt(self.op + '_neq_corr.dat', corr)
+        np.savetxt(self.out_name + self.op + '_neq_corr.dat', corr)
 

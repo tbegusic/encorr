@@ -42,6 +42,11 @@ class Initializer():
             field_pol = root.find('./field_pol').text
         except:
             field_pol = '0, 2'
+        #Output file name.
+        try:
+            out_name = root.find('./output').text + '_'
+        except:
+            out_name = ''
 
         #----------------------------
         #I-PI input parameters.
@@ -71,14 +76,14 @@ class Initializer():
             nsteps1 = 10000
         #Ensemble temperature in K converted to beta in atomic units.
         try:
-            beta = float(root.find('./ensemble/temperature').text)
+            beta = float(root.find('./system/ensemble/temperature').text)
         except:
             beta = 300
         beta = 1.0 / (3.167e-6 * beta) #beta in atomic units.
 
-        return Initializer(sim_name, nbeads, nsteps1//step2, nsteps2//step2, step1//step2, step2, op, epsilon, field_pol, beta)
+        return Initializer(sim_name, nbeads, nsteps1//step2, nsteps2//step2, step1//step2, step2, op, epsilon, field_pol, beta, out_name)
 
-    def __init__(self, sim_name, nbeads, nsteps1, nsteps2, step1, step2, op, epsilon, field_pol, beta):
+    def __init__(self, sim_name, nbeads, nsteps1, nsteps2, step1, step2, op, epsilon, field_pol, beta, out_name):
         self.sim_name = sim_name
         self.nbeads = nbeads
         self.nsteps1 =  nsteps1
@@ -89,4 +94,4 @@ class Initializer():
         self.epsilon = epsilon
         self.field_pol = field_pol
         self.beta = beta
-
+        self.out_name = out_name
