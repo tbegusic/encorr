@@ -5,4 +5,6 @@
 <step>40</step>
 <!--Operator dip (for absorption spectrum) or pol (for anisotropic Raman spectrum).-->
 <op>dip</op>
+<!--Output name prefix. Optional, no prefix is added if this entry is ommitted.-->
+<output>test</output>
 </spec>

@@ -29,7 +29,7 @@ fi
 }
 
 a=$1
-run_test eq_corr dip_eq_corr.dat eq
+run_test eq_corr test_dip_eq_corr.dat eq
 run_test neq_corr dip_neq_corr.dat neq
 run_test neq_2d dip_pol_neq_2d.dat neq_2d
 
