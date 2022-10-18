@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# Runs three tests and outputs Passed/Failed for each test: ./run_tests.sh
+# Cleans tests to delete previous result: ./run_tests.sh clean
+
 test_check(){
 if [ $1 -eq 0 ]
 then
@@ -9,26 +12,24 @@ else
 fi
 }
 
-cd eq_corr
-rm dip_eq_corr.dat &> /dev/null
-../../encorr.py --calc=eq
-diff dip_eq_corr.dat bck_dip_eq_corr.dat  > /dev/null 2>&1
+compare(){
+diff $1 bck_$1 > /dev/null 2>&1
 error=$?
 test_check $error
-cd - &> /dev/null 
+}
 
-cd neq_corr
-rm dip_neq_corr.dat &> /dev/null
-../../encorr.py --calc=neq
-diff dip_neq_corr.dat bck_dip_neq_corr.dat  > /dev/null 2>&1
-error=$?
-test_check $error
-cd - &> /dev/null 
+run_test(){
+rm $1/$2 &> /dev/null
+if [ "$a" != 'clean' ]; then
+  cd $1
+  ../../encorr.py --calc=$3
+  compare $2
+  cd - &> /dev/null
+fi
+}
 
-cd neq_2d
-rm dip_pol_neq_2d.dat &> /dev/null
-../../encorr.py --calc=neq_2d
-diff dip_pol_neq_2d.dat bck_dip_pol_neq_2d.dat  > /dev/null 2>&1
-error=$?
-test_check $error
-cd - &> /dev/null 
+a=$1
+run_test eq_corr dip_eq_corr.dat eq
+run_test neq_corr dip_neq_corr.dat neq
+run_test neq_2d dip_pol_neq_2d.dat neq_2d
+

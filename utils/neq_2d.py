@@ -1,6 +1,3 @@
-"""Class for equilibrium correlation functions.
-"""
-
 import sys
 import numpy as np
 from utils.neq_corr import *
@@ -10,9 +7,11 @@ __all__ = ["NonEquilibrium2D"]
 
 class NonEquilibrium2D(NonEquilibrium):
 
-    """Implements nonequilbrium expectation value of dipole.
-
-       Attributes:
+    """Implements two-dimensional equilibrium-nonequilibrium response function.
+       The result is (beta / epsilon) <(op2_{+}(t2) - op2_{-}(t2)) op1(-t1)>, where op1 = op[0], op2 = op[1], 
+       and op is given in input and has two components that are either dip (dipole) or pol (poalrizability).
+       Dipole and polarizability are projected on the field polarization given by the field_pol parameter.
+       Output is related to the response function of two-dimensional IR-Raman spectroscopy.
     """
 
     def __init__(self, input_param):
@@ -24,6 +23,7 @@ class NonEquilibrium2D(NonEquilibrium):
         self.op = [ i.strip() for i in self.op.split(',') ]
 
     def process(self):
+        #Get values of dip/pol along field_pol direction and average over beads. 
         x = []
         op_index = 0
         for op, field_pol in zip(self.op, self.field_pol):
@@ -37,7 +37,8 @@ class NonEquilibrium2D(NonEquilibrium):
             x_single /= self.nbeads
             x.append(x_single)
 
-        c = 0
+        #Compute result:
+        c = 0 # Count nonequilibrium events.
         corr = 0
         i_step = self.nsteps2 + 1 #Number of steps for t1 and t2.
         for i in range(self.step1 + 1, len(x[0])+1, self.step1): #Start at the first available checkpoint from eq dynamics.

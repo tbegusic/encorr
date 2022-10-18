@@ -1,6 +1,12 @@
 <spec>
+<!--Number of steps (in time steps of dynamics) for the computed correlation function.-->
 <corr_steps>200</corr_steps>
+<!--Step size for averaging. Every 'step' steps, a nonequilibrium event will be initiated. Must be divisible by the size of the dynamical time step.-->
 <step>300</step>
+<!--Epsilon controls the strength of perturbation by external field.-->
 <epsilon>2</epsilon>
+<!--Operators for the first and last interactions in 2D IR-Raman spectroscopy. This setup gives IR-IR-Raman spectrum, 'pol, dip' gives Raman-IR-IR spectrum.-->
 <op>dip, pol</op>
+<!--Field polarizations, i.e., components of first and last operators that will be used. For 'dip', 0 -> x, 1 -> y, 2 -> z. For 'pol', 0 -> xx, 1 -> xy, 2 -> xz, ..., 9 -> zz.-->
+<field_pol>0, 2</field_pol>
 </spec>

@@ -1,6 +1,3 @@
-"""Class for equilibrium correlation functions.
-"""
-
 import sys
 import numpy as np
 from utils.eq_corr import *
@@ -10,9 +7,9 @@ __all__ = ["NonEquilibrium"]
 
 class NonEquilibrium(Equilibrium):
 
-    """Implements nonequilbrium expectation value of dipole.
-
-       Attributes:
+    """Implements difference between nonequilibrium expectation values of dipole under dipole perturbations with positive and negative fields.
+       The result is <mu_{+}(t)> - <mu_{-}(t)>, which is related to the dipole-dipole correlation function and IR absorption spectra.
+       The perturbation is assumed to be applied along the z axis.
     """
 
     def __init__(self, input_param):

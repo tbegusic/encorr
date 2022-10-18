@@ -1,6 +1,8 @@
 <spec>
+<!--Number of steps (in time steps of dynamics, so must be divisible by it) for the computed correlation function.-->
 <corr_steps>8004</corr_steps>
+<!--Step size for window averaging. Must be divisible by the size of the dynamical time step.-->
 <step>40</step>
-<epsilon>0.01</epsilon>
+<!--Operator dip (for absorption spectrum) or pol (for anisotropic Raman spectrum).-->
 <op>dip</op>
 </spec>

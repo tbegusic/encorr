@@ -1,6 +1,10 @@
 <spec>
+<!--Number of steps (in time steps of dynamics) for the computed correlation function.-->
 <corr_steps>200</corr_steps>
+<!--Step size for averaging. Every 'step' steps, a nonequilibrium event will be initiated. Must be divisible by the size of the dynamical time step.-->
 <step>300</step>
+<!--Epsilon controls the strength of perturbation by external field.-->
 <epsilon>0.01</epsilon>
+<!--Operator dip (for absorption spectrum) or pol (for anisotropic Raman spectrum).-->
 <op>dip</op>
 </spec>
