@@ -18,6 +18,12 @@ or add that line to your .bashrc if you want to have it always available.
 
 Code was tested only on CentOS Linux 7 with python3 (version 3.8.5).
 
+To test that it is running properly, run tests in the following way
+```
+cd tests
+./run_tests.sh
+```
+
 ## Usage
 There are three applications of encorr: equilibrium correlation functions, nonequilibrium response, and two-time equilibrium-nonequilibrium response.
 
@@ -75,4 +81,3 @@ This correlation is related to the two-time response function of two-dimensional
 
 encorr assumes that an appropriate simulation with i-pi-eq_neq_spectra was performed, and that outputs simulation_name.dip_X and simulation_name.pol_X are available.
 See tests/neq_2d for an annotated input file.
-
