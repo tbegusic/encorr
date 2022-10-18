@@ -5,6 +5,19 @@ encorr is meant to be used in combination with i-pi (https://github.com/i-pi/i-p
 polarizability tensors should be printed out along a trajectory propagated using one of those tools. Then, appropriate correlation functions can be evaluated.
 Check out relevant documentation about i-pi-eq_neq_spectra, available at https://github.com/tbegusic/i-pi, before using encorr.
 
+## Installation
+To start using the code, download it using
+```
+git clone git@github.com:tbegusic/encorr.git
+```
+If you want to add it to your path, run
+```
+source env.sh
+```
+or add that line to your .bashrc if you want to have it always available.
+
+Code was tested only on CentOS Linux 7 with python3 (version 3.8.5).
+
 ## Usage
 There are three applications of encorr: equilibrium correlation functions, nonequilibrium response, and two-time equilibrium-nonequilibrium response.
 
