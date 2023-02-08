@@ -18,14 +18,14 @@ or add that line to your .bashrc if you want to have it always available.
 
 Code was tested only on CentOS Linux 7 with python3 (version 3.8.5).
 
-To test that it is running properly, run tests in the following way
+To test that it is running properly, run tests in the following way (takes less than a minute)
 ```
 cd tests
 ./run_tests.sh
 ```
 
 ## Usage
-There are three applications of encorr: equilibrium correlation functions, nonequilibrium response, and two-time equilibrium-nonequilibrium response.
+There are three applications of encorr: equilibrium correlation functions, nonequilibrium response, and two-time equilibrium-nonequilibrium response. Test files are a useful starting point, together with usage instructions below.
 
 **Equilibrium time correlation functions for IR absorption and anisotropic Raman spectra**
 
@@ -37,7 +37,7 @@ three files are needed:
 3. simulation_name.dip_X: File containing dipole moments along a trajectory, 3 numbers (x, y, z components) per line, as produced by i-pi. 
 X denotes the number of bead.  encorr will automatically average over all beads, whose number is obtained from i-pi input.
 
-For Raman spectra, encorr assumes a file called simulation_name.pol_X is available, with 9 number (xx, xy, xz, ..., zz components of the polarizability tensor) per line.
+For Raman spectra, encorr assumes a file called simulation_name.pol_X is available, with 9 numbers (xx, xy, xz, ..., zz components of the polarizability tensor) per line.
 It evaluates the anisotropic correlation function:
 $$C(t) = \langle \text{Tr}[\boldsymbol{\beta}(0) \cdot \boldsymbol{\beta}(t)]\rangle,$$
 where $\boldsymbol{\beta} = \boldsymbol{\Pi} - \frac{1}{3} \text{Tr}(\boldsymbol{\Pi})\mathbf{1}$.
